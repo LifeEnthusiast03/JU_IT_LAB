@@ -140,14 +140,14 @@
 # ./file2.txt
 
 # Q21. sort - Write sorted concatenation of all FILE(s) to standard output.
-# echo "bob\nAlice\ncharlie" > file1.txt ; cat file1.txt ; sort file1.txt
+# printf "bob\nAlice\ncharlie\n" > file1.txt ; cat file1.txt ; sort file1.txt
 # output
 # bob 
 # Alice 
 # charlie
 # Alice 
 # bob 
-# Charlie
+# charlie
 
 # Q22. ps -  it  displays information about a selection of the active processes.
 # ps
