@@ -292,7 +292,6 @@ int main(int argc, char *argv[]) {
         } else {
             printf("Child process failed\n");
         }
-
         time(&end_time);
         transfer_time = difftime(end_time, start_time);
         printf("Total transfer time: %.2f seconds\n", transfer_time);
