@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Validation</title>
+</head>
+<body>
+    <h1>Text Input Validation</h1>
+
+    <input type="text" id="textInput" placeholder="Enter your name" />
+    <button id="submitBtn">Submit</button>
+
+    <p id="warning" style="color:red; display:none;">Please fill in the text field!</p>
+    <p id="success" style="color:green; display:none;"></p>
+
+    <script>
+        const textInput = document.getElementById('textInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const warning = document.getElementById('warning');
+        const success = document.getElementById('success');
+
+        submitBtn.addEventListener('click', () => {
+            const inputValue = textInput.value.trim();
+
+            if (inputValue === '') {
+                warning.style.display = 'block';
+                success.style.display = 'none';
+            } else {
+                warning.style.display = 'none';
+                success.textContent = 'Welcome, ' + inputValue + '!';
+                success.style.display = 'block';
+                textInput.value = '';
+            }
+        });
+
+        textInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                submitBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>

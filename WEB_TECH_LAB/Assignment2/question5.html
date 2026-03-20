@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Time Day Displayer</title>
+</head>
+<body>
+    <h1>Display Current Date, Time, and Day</h1>
+
+    <button id="displayBtn">Show Date & Time</button>
+
+    <div id="dateTimeDisplay" style="margin-top: 20px; padding: 15px; border: 1px solid #ccc;">
+        <p id="date"></p>
+        <p id="time"></p>
+        <p id="day"></p>
+    </div>
+
+    <script>
+        const displayBtn = document.getElementById('displayBtn');
+        const dateDisplay = document.getElementById('date');
+        const timeDisplay = document.getElementById('time');
+        const dayDisplay = document.getElementById('day');
+
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        displayBtn.addEventListener('click', () => {
+            const currentDate = new Date();
+
+            const date = currentDate.toLocaleDateString();
+            const time = currentDate.toLocaleTimeString();
+            const day = days[currentDate.getDay()];
+
+            dateDisplay.textContent = 'Date: ' + date;
+            timeDisplay.textContent = 'Time: ' + time;
+            dayDisplay.textContent = 'Day: ' + day;
+        });
+    </script>
+</body>
+</html>

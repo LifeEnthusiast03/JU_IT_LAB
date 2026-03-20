@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paragraph Toggle</title>
+</head>
+<body>
+    <h1>Show/Hide Paragraph</h1>
+
+    <button id="toggleBtn">Show</button>
+
+    <p id="paragraph" style="display:none; padding: 15px; background-color: #f0f0f0; margin-top: 20px;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+
+    <script>
+        const toggleBtn = document.getElementById('toggleBtn');
+        const paragraph = document.getElementById('paragraph');
+
+        let isVisible = false;
+
+        toggleBtn.addEventListener('click', () => {
+            isVisible = !isVisible;
+
+            if (isVisible) {
+                paragraph.style.display = 'block';
+                toggleBtn.textContent = 'Hide';
+            } else {
+                paragraph.style.display = 'none';
+                toggleBtn.textContent = 'Show';
+            }
+        });
+    </script>
+</body>
+</html>

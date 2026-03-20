@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square and Cube Calculator</title>
+</head>
+<body>
+    <h1>Square and Cube Calculator</h1>
+
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <button id="calculateBtn">Calculate</button>
+
+    <p id="square"></p>
+    <p id="cube"></p>
+
+    <script>
+        const numberInput = document.getElementById('numberInput');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const square = document.getElementById('square');
+        const cube = document.getElementById('cube');
+
+        calculateBtn.addEventListener('click', () => {
+            const num = numberInput.value.trim();
+
+            if (num === '') {
+                square.textContent = 'Please enter a number!';
+                cube.textContent = '';
+                return;
+            }
+
+            const number = parseInt(num);
+            const squareValue = number * number;
+            const cubeValue = number * number * number;
+
+            square.textContent = 'Square of ' + number + ' is ' + squareValue;
+            cube.textContent = 'Cube of ' + number + ' is ' + cubeValue;
+        });
+
+        numberInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                calculateBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
