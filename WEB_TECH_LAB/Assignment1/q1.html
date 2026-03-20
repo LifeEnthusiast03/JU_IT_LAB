@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Message on Button Click</title>
+</head>
+<body>
+    <h1>Display Message on Button Click</h1>
+
+    <button id="messageBtn">Click Me</button>
+    <p id="message"></p>
+
+    <script>
+        const messageBtn = document.getElementById('messageBtn');
+        const message = document.getElementById('message');
+
+        messageBtn.addEventListener('click', () => {
+            message.textContent = 'Welcome! You clicked the button!';
+        });
+    </script>
+</body>
+</html>

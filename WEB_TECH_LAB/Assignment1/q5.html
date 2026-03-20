@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Current Date and Time</title>
+</head>
+<body>
+    <h1>Display Current Date and Time</h1>
+
+    <button id="dateBtn">Show Date & Time</button>
+
+    <p id="dateTimeDisplay"></p>
+
+    <script>
+        const dateBtn = document.getElementById('dateBtn');
+        const dateTimeDisplay = document.getElementById('dateTimeDisplay');
+
+        dateBtn.addEventListener('click', () => {
+            const currentDateTime = new Date();
+            dateTimeDisplay.textContent = 'Current Date and Time: ' + currentDateTime;
+        });
+    </script>
+</body>
+</html>
