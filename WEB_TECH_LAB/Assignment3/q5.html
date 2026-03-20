@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form Validation</title>
+    <style>
+        body { padding: 20px; }
+        .container { max-width: 600px; margin: 30px auto; padding: 30px; }
+        h1 { text-align: center; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; box-sizing: border-box; }
+        .error { color: #e74c3c; font-size: 12px; margin-top: 5px; display: none; }
+        button { width: 100%; padding: 12px; background: #333; color: white; border: none; cursor: pointer; }
+        .success { display: none; background: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Registration Form</h1>
+
+        <div class="success" id="successMsg">Registration successful! Thank you for registering.</div>
+
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" placeholder="Only alphabets, minimum 6 characters" />
+                <div class="error" id="fnameError">First name must contain only alphabets and be at least 6 characters</div>
+            </div>
+
+            <div class="form-group">
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" placeholder="Should not be empty" />
+                <div class="error" id="lnameError">Last name should not be empty</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" placeholder="Format: name@domain.com" />
+                <div class="error" id="emailError">Please enter a valid email (name@domain.com)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Mobile Number:</label>
+                <input type="text" id="phone" placeholder="Exactly 10 digits" maxlength="10" />
+                <div class="error" id="phoneError">Mobile number must contain exactly 10 digits</div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" rows="4" placeholder="Should not be empty"></textarea>
+                <div class="error" id="addressError">Address should not be empty</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Minimum 6 characters" />
+                <div class="error" id="passwordError">Password must be at least 6 characters</div>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const successMsg = document.getElementById('successMsg');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const fname = document.getElementById('fname').value.trim();
+            const lname = document.getElementById('lname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const password = document.getElementById('password').value;
+
+            let isValid = true;
+
+            // First Name validation
+            if (!/^[a-zA-Z]{6,}$/.test(fname)) {
+                showError('fnameError');
+                isValid = false;
+            } else {
+                hideError('fnameError');
+            }
+
+            // Last Name validation
+            if (lname === '') {
+                showError('lnameError');
+                isValid = false;
+            } else {
+                hideError('lnameError');
+            }
+
+            // Email validation
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showError('emailError');
+                isValid = false;
+            } else {
+                hideError('emailError');
+            }
+
+            // Mobile Number validation
+            if (!/^\d{10}$/.test(phone)) {
+                showError('phoneError');
+                isValid = false;
+            } else {
+                hideError('phoneError');
+            }
+
+            // Address validation
+            if (address === '') {
+                showError('addressError');
+                isValid = false;
+            } else {
+                hideError('addressError');
+            }
+
+            // Password validation
+            if (password.length < 6) {
+                showError('passwordError');
+                isValid = false;
+            } else {
+                hideError('passwordError');
+            }
+
+            if (isValid) {
+                successMsg.style.display = 'block';
+                form.reset();
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 5000);
+            }
+        });
+
+        function showError(elementId) {
+            document.getElementById(elementId).style.display = 'block';
+        }
+
+        function hideError(elementId) {
+            document.getElementById(elementId).style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Store - Home</title>
+    <style>
+        body { margin: 0; padding: 0; }
+        .header { background: #333; color: white; padding: 20px; text-align: center; }
+        .nav { background: #555; padding: 10px; text-align: center; }
+        .nav a { color: white; margin: 0 15px; text-decoration: none; display: inline-block; padding: 8px 15px; }
+        .nav a:hover { background: #333; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 20px; }
+        .featured { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+        .book-card { background: white; padding: 15px; border: 1px solid #ddd; }
+        .genre-section { margin: 30px 0; }
+        .genre-section h3 { background: #f0f0f0; padding: 10px; }
+        button { background: #333; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        button:hover { background: #555; }
+        .footer { background: #333; color: white; padding: 15px; text-align: center; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📚 Online Book Store</h1>
+        <p>Your gateway to millions of books</p>
+    </div>
+
+    <div class="nav">
+        <a href="q2_home.html">Home</a>
+        <a href="q2_catalogue.html">Browse Books</a>
+        <a href="q2_login.html">Login</a>
+        <a href="q2_registration.html">Register</a>
+    </div>
+
+    <div class="container">
+        <h2>Welcome to Our Book Store!</h2>
+        <p style="text-align: center; font-size: 1.1em; line-height: 1.6;">Discover thousands of books across all genres. From bestsellers to classics, find your next favorite read.</p>
+
+        <div class="genre-section">
+            <h3>📖 Featured Books</h3>
+            <div class="featured">
+                <div class="book-card">
+                    <h4>The Great Gatsby</h4>
+                    <p><strong>Author:</strong> F. Scott Fitzgerald</p>
+                    <p><strong>Genre:</strong> Classic Fiction</p>
+                    <p><strong>Price:</strong> Rs. 299</p>
+                    <p style="color: #666; font-size: 0.9em;">A masterpiece of American literature exploring themes of wealth and the American Dream.</p>
+                    <button onclick="alert('Please login to add to cart')">Add to Cart</button>
+                </div>
+
+                <div class="book-card">
+                    <h4>1984</h4>
+                    <p><strong>Author:</strong> George Orwell</p>
+                    <p><strong>Genre:</strong> Dystopian Fiction</p>
+                    <p><strong>Price:</strong> Rs. 399</p>
+                    <p style="color: #666; font-size: 0.9em;">A gripping political thriller set in a totalitarian future society.</p>
+                    <button onclick="alert('Please login to add to cart')">Add to Cart</button>
+                </div>
+
+                <div class="book-card">
+                    <h4>To Kill a Mockingbird</h4>
+                    <p><strong>Author:</strong> Harper Lee</p>
+                    <p><strong>Genre:</strong> Classic Fiction</p>
+                    <p><strong>Price:</strong> Rs. 349</p>
+                    <p style="color: #666; font-size: 0.9em;">A powerful story about racial injustice and childhood innocence in the American South.</p>
+                    <button onclick="alert('Please login to add to cart')">Add to Cart</button>
+                </div>
+
+                <div class="book-card">
+                    <h4>Pride and Prejudice</h4>
+                    <p><strong>Author:</strong> Jane Austen</p>
+                    <p><strong>Genre:</strong> Romance, Classic</p>
+                    <p><strong>Price:</strong> Rs. 279</p>
+                    <p style="color: #666; font-size: 0.9em;">An enduring romance novel about the witty Elizabeth Bennet and the proud Mr. Darcy.</p>
+                    <button onclick="alert('Please login to add to cart')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="genre-section">
+            <h3>✨ Why Choose Us?</h3>
+            <ul style="line-height: 1.8;">
+                <li><strong>Wide Selection:</strong> Over 100,000 books across all genres and categories</li>
+                <li><strong>Best Prices:</strong> Competitive pricing with frequent discounts and offers</li>
+                <li><strong>Fast Delivery:</strong> Quick shipping to all locations with tracking</li>
+                <li><strong>Easy Returns:</strong> 30-day return policy for all purchases</li>
+                <li><strong>Secure Payment:</strong> Multiple payment options with full security</li>
+                <li><strong>Expert Reviews:</strong> Book recommendations and customer ratings</li>
+            </ul>
+        </div>
+
+        <div class="genre-section">
+            <h3>🎯 Get Started</h3>
+            <p>Ready to start reading? <strong><a href="q2_catalogue.html" style="color: #333;">Browse our catalogue</a></strong> or <strong><a href="q2_registration.html" style="color: #333;">create an account</a></strong> to enjoy exclusive deals and personalized recommendations.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Online Book Store. All rights reserved.</p>
+        <p>For support, email us at support@bookstore.com</p>
+    </div>
+</body>
+</html>

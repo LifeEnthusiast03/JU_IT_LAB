@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Store - Registration</title>
+    <style>
+        body { padding: 20px; margin: 0; }
+        .nav { background: #555; padding: 10px; text-align: center; margin-bottom: 20px; }
+        .nav a { color: white; margin: 0 15px; text-decoration: none; display: inline-block; padding: 8px 15px; }
+        .nav a:hover { background: #333; }
+        .container { max-width: 600px; margin: 20px auto; padding: 30px; border: 1px solid #ddd; }
+        h1 { text-align: center; }
+        .info-text { text-align: center; color: #666; margin-bottom: 20px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        label { display: block; margin: 15px 0 5px; font-weight: bold; }
+        input, textarea, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; box-sizing: border-box; }
+        .form-row input { margin-bottom: 0; }
+        button { width: 100%; padding: 12px; background: #333; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background: #555; }
+        .error { color: #e74c3c; font-size: 12px; margin-top: 5px; display: none; }
+        .success { display: none; background: #d4edda; color: #155724; padding: 15px; border-radius: 4px; margin-bottom: 20px; text-align: center; }
+        p { text-align: center; margin-top: 20px; }
+        a { color: #333; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .password-strength { margin-top: 5px; padding: 5px; border-radius: 3px; font-size: 12px; }
+        .strength-weak { background: #ffcccc; color: #c92a2a; }
+        .strength-medium { background: #fff3cd; color: #856404; }
+        .strength-strong { background: #d4edda; color: #155724; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="q2_home.html">Home</a>
+        <a href="q2_login.html">Login</a>
+        <a href="q2_catalogue.html">Browse</a>
+    </div>
+
+    <div class="container">
+        <h1>Create Your Account</h1>
+        <p class="info-text">Join our community to enjoy personalized recommendations and exclusive offers</p>
+
+        <div class="success" id="successMsg">
+            ✓ Registration successful! You can now <a href="q2_login.html" style="color: #155724; font-weight: bold;">login to your account</a>
+        </div>
+
+        <form id="registrationForm" onsubmit="handleRegistration(event)">
+            <div class="form-row">
+                <div>
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" placeholder="John" required />
+                    <div class="error" id="fnameError">First name is required</div>
+                </div>
+                <div>
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" placeholder="Doe" required />
+                    <div class="error" id="lnameError">Last name is required</div>
+                </div>
+            </div>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" placeholder="your.email@example.com" required />
+            <div class="error" id="emailError">Please enter a valid email address</div>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" placeholder="10-digit phone number" maxlength="10" required />
+            <div class="error" id="phoneError">Phone number must be 10 digits</div>
+
+            <label for="country">Country:</label>
+            <select id="country" required>
+                <option value="">Select Country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+            </select>
+
+            <label for="address">Address:</label>
+            <textarea id="address" rows="3" placeholder="Enter your complete address" required></textarea>
+            <div class="error" id="addressError">Address is required</div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Minimum 8 characters" required onkeyup="checkPasswordStrength()" />
+            <div class="error" id="passwordError">Password must be at least 8 characters</div>
+            <div class="password-strength" id="strengthIndicator" style="display: none;"></div>
+
+            <label for="confirm">Confirm Password:</label>
+            <input type="password" id="confirm" placeholder="Re-enter password" required />
+            <div class="error" id="confirmError">Passwords do not match</div>
+
+            <label style="margin-top: 20px;">
+                <input type="checkbox" id="terms" required /> I agree to the <strong>Terms of Service</strong> and <strong>Privacy Policy</strong>
+            </label>
+            <div class="error" id="termsError">You must agree to the terms</div>
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p style="border-top: 1px solid #ddd; padding-top: 20px; margin-top: 20px;">
+            Already have an account? <a href="q2_login.html"><strong>Login here</strong></a>
+        </p>
+    </div>
+
+    <script>
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const indicator = document.getElementById('strengthIndicator');
+            
+            let strength = 'Weak';
+            let strengthClass = 'strength-weak';
+            
+            if (password.length >= 8) {
+                strength = 'Medium';
+                strengthClass = 'strength-medium';
+            }
+            
+            if (password.length >= 12 && /[A-Z]/.test(password) && /[0-9]/.test(password)) {
+                strength = 'Strong';
+                strengthClass = 'strength-strong';
+            }
+            
+            indicator.textContent = 'Password Strength: ' + strength;
+            indicator.className = 'password-strength ' + strengthClass;
+            indicator.style.display = 'block';
+        }
+
+        function handleRegistration(event) {
+            event.preventDefault();
+            
+            const fname = document.getElementById('firstname').value.trim();
+            const lname = document.getElementById('lastname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirm').value;
+            const terms = document.getElementById('terms').checked;
+
+            let isValid = true;
+
+            // Validation
+            if (!fname) {
+                document.getElementById('fnameError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('fnameError').style.display = 'none';
+            }
+
+            if (!lname) {
+                document.getElementById('lnameError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('lnameError').style.display = 'none';
+            }
+
+            if (!email || !email.includes('@')) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+
+            if (!/^\d{10}$/.test(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('phoneError').style.display = 'none';
+            }
+
+            if (!address) {
+                document.getElementById('addressError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('addressError').style.display = 'none';
+            }
+
+            if (password.length < 8) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').style.display = 'none';
+            }
+
+            if (password !== confirm) {
+                document.getElementById('confirmError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('confirmError').style.display = 'none';
+            }
+
+            if (!terms) {
+                document.getElementById('termsError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('termsError').style.display = 'none';
+            }
+
+            if (isValid) {
+                document.getElementById('successMsg').style.display = 'block';
+                document.getElementById('registrationForm').style.display = 'none';
+                setTimeout(() => {
+                    window.location.href = 'q2_login.html';
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>

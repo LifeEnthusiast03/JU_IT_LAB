@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Store - Catalogue</title>
+    <style>
+        body { padding: 20px; margin: 0; }
+        .nav { background: #555; padding: 10px; text-align: center; margin-bottom: 20px; }
+        .nav a { color: white; margin: 0 15px; text-decoration: none; display: inline-block; padding: 8px 15px; }
+        .nav a:hover { background: #333; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { text-align: center; }
+        .search-filter { margin: 20px 0; padding: 15px; background: #f9f9f9; }
+        .search-filter input { padding: 10px; width: 300px; border: 1px solid #ddd; }
+        .search-filter button { padding: 10px 20px; background: #333; color: white; border: none; cursor: pointer; margin-left: 10px; }
+        .search-filter select { padding: 10px; margin-left: 10px; border: 1px solid #ddd; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th { background: #333; color: white; padding: 12px; text-align: left; }
+        td { padding: 12px; border-bottom: 1px solid #ddd; }
+        tr:hover { background: #f5f5f5; }
+        .price { color: #e74c3c; font-weight: bold; }
+        .rating { color: #f39c12; font-size: 0.9em; }
+        .action-btn { background: #27ae60; color: white; padding: 6px 12px; border: none; cursor: pointer; font-size: 0.9em; }
+        .action-btn:hover { background: #229954; }
+        .genre-badge { display: inline-block; background: #ddd; padding: 3px 8px; font-size: 0.8em; margin: 2px; border-radius: 3px; }
+        .stats { text-align: center; margin: 20px 0; padding: 15px; background: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="q2_home.html">Home</a>
+        <a href="q2_login.html">Login</a>
+        <a href="q2_registration.html">Register</a>
+    </div>
+
+    <div class="container">
+        <h1>📚 Book Catalogue</h1>
+
+        <div class="search-filter">
+            <input type="text" id="searchBox" placeholder="Search by book name or author" />
+            <button onclick="filterBooks()">Search</button>
+            <select id="genreFilter" onchange="filterBooks()">
+                <option value="">All Genres</option>
+                <option value="Classic">Classic Fiction</option>
+                <option value="Dystopian">Dystopian Fiction</option>
+                <option value="Romance">Romance</option>
+                <option value="Adventure">Adventure</option>
+            </select>
+        </div>
+
+        <div class="stats">
+            <p>Total Books: <strong id="totalBooks">8</strong> | Sort by: <select style="padding: 5px;" onchange="sortBooks(this.value)"><option value="">Default</option><option value="price-low">Price: Low to High</option><option value="price-high">Price: High to Low</option><option value="title">Title A-Z</option></select></p>
+        </div>
+
+        <table id="bookTable">
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>The Great Gatsby</strong></td>
+                    <td>F. Scott Fitzgerald</td>
+                    <td><span class="genre-badge">Classic</span></td>
+                    <td class="price">Rs. 299</td>
+                    <td class="rating">★★★★★ (4.5)</td>
+                    <td><button class="action-btn" onclick="addToCart('The Great Gatsby', 299)">Add Cart</button></td>
+                </tr>
+                <tr>
+                    <td><strong>To Kill a Mockingbird</strong></td>
+                    <td>Harper Lee</td>
+                    <td><span class="genre-badge">Classic</span></td>
+                    <td class="price">Rs. 349</td>
+                    <td class="rating">★★★★★ (4.7)</td>
+                    <td><button class="action-btn" onclick="addToCart('To Kill a Mockingbird', 349)">Add Cart</button></td>
+                </tr>
+                <tr>
+                    <td><strong>1984</strong></td>
+                    <td>George Orwell</td>
+                    <td><span class="genre-badge">Dystopian</span></td>
+                    <td class="price">Rs. 399</td>
+                    <td class="rating">★★★★☆ (4.4)</td>
+                    <td><button class="action-btn" onclick="addToCart('1984', 399)">Add Cart</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Pride and Prejudice</strong></td>
+                    <td>Jane Austen</td>
+                    <td><span class="genre-badge">Romance</span><span class="genre-badge">Classic</span></td>
+                    <td class="price">Rs. 279</td>
+                    <td class="rating">★★★★★ (4.6)</td>
+                    <td><button class="action-btn" onclick="addToCart('Pride and Prejudice', 279)">Add Cart</button></td>
+                </tr>
+                <tr>
+                    <td><strong>The Catcher in the Rye</strong></td>
+                    <td>J.D. Salinger</td>
+                    <td><span class="genre-badge">Classic</span></td>
+                    <td class="price">Rs. 319</td>
+                    <td class="rating">★★★★☆ (4.0)</td>
+                    <td><button class="action-btn" onclick="addToCart('The Catcher in the Rye', 319)">Add Cart</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Brave New World</strong></td>
+                    <td>Aldous Huxley</td>
+                    <td><span class="genre-badge">Dystopian</span></td>
+                    <td class="price">Rs. 379</td>
+                    <td class="rating">★★★★☆ (4.3)</td>
+                    <td><button class="action-btn" onclick="addToCart('Brave New World', 379)">Add Cart</button></td>
+                </tr>
+                <tr>
+                    <td><strong>The Hobbit</strong></td>
+                    <td>J.R.R. Tolkien</td>
+                    <td><span class="genre-badge">Adventure</span></td>
+                    <td class="price">Rs. 429</td>
+                    <td class="rating">★★★★★ (4.8)</td>
+                    <td><button class="action-btn" onclick="addToCart('The Hobbit', 429)">Add Cart</button></td>
+                </tr>
+                <tr>
+                    <td><strong>Wuthering Heights</strong></td>
+                    <td>Emily Brontë</td>
+                    <td><span class="genre-badge">Classic</span><span class="genre-badge">Romance</span></td>
+                    <td class="price">Rs. 289</td>
+                    <td class="rating">★★★★☆ (4.2)</td>
+                    <td><button class="action-btn" onclick="addToCart('Wuthering Heights', 289)">Add Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function addToCart(bookName, price) {
+            alert(bookName + ' added to cart! (Rs. ' + price + ')');
+        }
+
+        function filterBooks() {
+            const searchText = document.getElementById('searchBox').value.toLowerCase();
+            const genreFilter = document.getElementById('genreFilter').value;
+            const rows = document.querySelectorAll('#bookTable tbody tr');
+
+            rows.forEach(row => {
+                const title = row.cells[0].textContent.toLowerCase();
+                const author = row.cells[1].textContent.toLowerCase();
+                const genre = row.cells[2].textContent;
+                
+                const matchSearch = title.includes(searchText) || author.includes(searchText);
+                const matchGenre = !genreFilter || genre.includes(genreFilter);
+                
+                row.style.display = (matchSearch && matchGenre) ? '' : 'none';
+            });
+        }
+
+        function sortBooks(sortType) {
+            const table = document.getElementById('bookTable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            
+            rows.sort((a, b) => {
+                if (sortType === 'price-low') {
+                    const priceA = parseInt(a.cells[3].textContent.replace(/[^0-9]/g, ''));
+                    const priceB = parseInt(b.cells[3].textContent.replace(/[^0-9]/g, ''));
+                    return priceA - priceB;
+                } else if (sortType === 'price-high') {
+                    const priceA = parseInt(a.cells[3].textContent.replace(/[^0-9]/g, ''));
+                    const priceB = parseInt(b.cells[3].textContent.replace(/[^0-9]/g, ''));
+                    return priceB - priceA;
+                } else if (sortType === 'title') {
+                    return a.cells[0].textContent.localeCompare(b.cells[0].textContent);
+                }
+                return 0;
+            });
+            
+            rows.forEach(row => table.querySelector('tbody').appendChild(row));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Store - Login</title>
+    <style>
+        body { padding: 20px; margin: 0; }
+        .nav { background: #555; padding: 10px; text-align: center; margin-bottom: 20px; }
+        .nav a { color: white; margin: 0 15px; text-decoration: none; display: inline-block; padding: 8px 15px; }
+        .nav a:hover { background: #333; }
+        .container { max-width: 450px; margin: 30px auto; padding: 30px; border: 1px solid #ddd; }
+        h1 { text-align: center; }
+        label { display: block; margin: 15px 0 5px; font-weight: bold; }
+        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; box-sizing: border-box; }
+        .checkbox-group { display: flex; align-items: center; margin-bottom: 15px; }
+        .checkbox-group input { width: auto; margin-right: 10px; }
+        .checkbox-group label { margin: 0; }
+        button { width: 100%; padding: 12px; background: #333; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background: #555; }
+        .demo-btn { background: #27ae60; margin-top: 10px; }
+        .demo-btn:hover { background: #229954; }
+        p { text-align: center; margin-top: 20px; }
+        a { color: #333; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .error { color: #e74c3c; font-size: 12px; margin-top: 5px; display: none; }
+        .success { color: #27ae60; font-size: 12px; margin-top: 5px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="q2_home.html">Home</a>
+        <a href="q2_catalogue.html">Browse</a>
+        <a href="q2_registration.html">Register</a>
+    </div>
+
+    <div class="container">
+        <h1>Login to Your Account</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 20px;">Access your wishlist, orders, and recommendations</p>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" placeholder="your.email@example.com" required />
+            <div class="error" id="emailError">Please enter a valid email address</div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password" required />
+            <div class="error" id="passwordError">Password is required</div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="remember" />
+                <label for="remember">Remember me on this device</label>
+            </div>
+
+            <button type="submit">Login</button>
+            <button type="button" class="demo-btn" onclick="useDemoCredentials()">Try Demo Login</button>
+        </form>
+
+        <div class="success" id="successMsg">Login successful! Redirecting...</div>
+
+        <p style="margin-top: 25px; text-align: center; color: #666;">
+            <a href="#" onclick="alert('Password reset link would be sent to your email')">Forgot your password?</a>
+        </p>
+
+        <p style="border-top: 1px solid #ddd; padding-top: 20px; margin-top: 20px;">
+            Don't have an account? <a href="q2_registration.html"><strong>Register here</strong></a>
+        </p>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            const successMsg = document.getElementById('successMsg');
+
+            if (!email || !password) {
+                if (!email) document.getElementById('emailError').style.display = 'block';
+                if (!password) document.getElementById('passwordError').style.display = 'block';
+                return;
+            }
+
+            if (!email.includes('@')) {
+                document.getElementById('emailError').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('emailError').style.display = 'none';
+            document.getElementById('passwordError').style.display = 'none';
+
+            successMsg.style.display = 'block';
+            setTimeout(() => {
+                alert('Login successful! Welcome ' + email);
+                document.getElementById('loginForm').reset();
+                successMsg.style.display = 'none';
+            }, 1500);
+        }
+
+        function useDemoCredentials() {
+            document.getElementById('email').value = 'demo@bookstore.com';
+            document.getElementById('password').value = 'demo123';
+            alert('Demo credentials entered. Click Login to proceed.');
+        }
+
+        document.getElementById('email').addEventListener('focus', () => {
+            document.getElementById('emailError').style.display = 'none';
+        });
+        document.getElementById('password').addEventListener('focus', () => {
+            document.getElementById('passwordError').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
