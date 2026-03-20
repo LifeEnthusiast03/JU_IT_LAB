@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Size Toggle</title>
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        body.size-small {
+            font-size: 14px;
+        }
+
+        body.size-medium {
+            font-size: 18px;
+        }
+
+        body.size-large {
+            font-size: 22px;
+        }
+
+        body.size-xlarge {
+            font-size: 26px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="size-medium">
+    <h1>Font Size Toggle</h1>
+
+    <div class="controls">
+        <button id="decreaseBtn">Decrease</button>
+        <span id="sizeDisplay">Medium</span>
+        <button id="increaseBtn">Increase</button>
+    </div>
+
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+
+    <script src="q11.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Poll</title>
+</head>
+<body>
+    <h1>Voting Poll</h1>
+
+    <div>
+        <h2>What is your favorite programming language?</h2>
+        <button id="option1">JavaScript</button>
+        <button id="option2">Python</button>
+        <button id="option3">Java</button>
+    </div>
+
+    <hr />
+
+    <div>
+        <h2>Results</h2>
+        <div>
+            <p>JavaScript: <span id="percent1">0</span>% (<span id="votes1">0</span> votes)</p>
+            <div style="background-color: #f0f0f0; width: 300px; height: 20px;">
+                <div id="bar1" style="background-color: #4CAF50; height: 100%; width: 0%;"></div>
+            </div>
+        </div>
+
+        <div>
+            <p>Python: <span id="percent2">0</span>% (<span id="votes2">0</span> votes)</p>
+            <div style="background-color: #f0f0f0; width: 300px; height: 20px;">
+                <div id="bar2" style="background-color: #2196F3; height: 100%; width: 0%;"></div>
+            </div>
+        </div>
+
+        <div>
+            <p>Java: <span id="percent3">0</span>% (<span id="votes3">0</span> votes)</p>
+            <div style="background-color: #f0f0f0; width: 300px; height: 20px;">
+                <div id="bar3" style="background-color: #FF9800; height: 100%; width: 0%;"></div>
+            </div>
+        </div>
+
+        <p>Total Votes: <span id="totalVotes">0</span></p>
+    </div>
+
+    <script src="q9.js"></script>
+</body>
+</html>
