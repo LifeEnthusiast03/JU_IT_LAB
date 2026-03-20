@@ -198,19 +198,11 @@ static void do_step(void) {
     uint64_t off = random_offset();
     unsigned char val = (unsigned char)(rand() & 0xFF);
 
-    g_map[off] = val;
+        if (pwrite(g_fd, &val, 1, off) != 1) {
+            perror("pwrite");
+            cleanup_and_exit(0);
+        }
 
-    long pagesz = sysconf(_SC_PAGESIZE);
-    if (pagesz <= 0) pagesz = 4096;
-    uint64_t page_base = off & ~((uint64_t)pagesz - 1);
-
-  
-    if (msync((void *)(g_map + page_base), (size_t)pagesz, MS_SYNC) != 0) {
-        perror("msync");
-        cleanup_and_exit(0);
-    }
-
- 
     unsigned char got = g_map[off];
 
 
@@ -269,7 +261,6 @@ int main(int argc, char **argv) {
   
     for (;;) {
         do_step();
-        sleep(1);
     }
 
     
