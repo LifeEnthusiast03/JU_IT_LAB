@@ -35,14 +35,15 @@
 
         convertBtn.addEventListener('click', () => {
             const num = numInput.value.trim();
-
+            console.log("enter ");
+            
             if (num === '') {
                 result.textContent = 'Please enter a number!';
                 result.style.color = 'red';
                 return;
             }
 
-            const number = parseInt(num);
+            let number = parseInt(num);
             
             if (number > 999) {
                 result.textContent = 'Please enter a number between 0-999 only!';
