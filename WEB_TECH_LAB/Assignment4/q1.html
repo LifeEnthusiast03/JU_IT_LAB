@@ -18,7 +18,8 @@
     </div>
 
     <ul id="taskList"></ul>
-
-    <script src="q1.js"></script>
+<script>
+const taskInput=document.getElementById('taskInput'),addBtn=document.getElementById('addBtn'),taskList=document.getElementById('taskList'),pendingCount=document.getElementById('pendingCount');let tasks=[];addBtn.addEventListener('click',addTask),taskInput.addEventListener('keypress',(e)=>{'Enter'===e.key&&addTask()});function addTask(){const t=taskInput.value.trim();return ''===t?(alert('Please enter a task!'),void 0):(tasks.push({id:Date.now(),text:t,completed:!1}),renderTasks(),taskInput.value='',taskInput.focus(),void 0)}function renderTasks(){taskList.innerHTML='',0===tasks.length?(taskList.innerHTML='<li>No tasks yet</li>',updatePendingCount()):(tasks.forEach((e)=>{const t=document.createElement('li');e.completed&&t.classList.add('completed');const n=document.createElement('input');n.type='checkbox',n.checked=e.completed,n.addEventListener('change',()=>toggleCompletion(e.id));const d=document.createElement('span');d.textContent=e.text;const i=document.createElement('button');i.textContent='Delete',i.addEventListener('click',()=>deleteTask(e.id)),t.appendChild(n),t.appendChild(d),t.appendChild(i),taskList.appendChild(t)}),updatePendingCount())}function toggleCompletion(e){const t=tasks.find(t=>t.id===e);t&&(t.completed=!t.completed,renderTasks())}function deleteTask(e){tasks=tasks.filter(t=>t.id!==e),renderTasks()}function updatePendingCount(){const e=tasks.filter(e=>!e.completed).length;pendingCount.textContent=e}renderTasks();
+</script>
 </body>
 </html>

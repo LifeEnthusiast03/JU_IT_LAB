@@ -13,7 +13,8 @@
     <button id="clearBtn">Clear</button>
 
     <p id="message"></p>
-
-    <script src="q7.js"></script>
+<script>
+const colorInput=document.getElementById('colorInput'),saveBtn=document.getElementById('saveBtn'),clearBtn=document.getElementById('clearBtn'),message=document.getElementById('message'),savedColor=localStorage.getItem('favoriteColor');savedColor&&(colorInput.value=savedColor,document.body.style.backgroundColor=savedColor,message.textContent='Color loaded from storage'),saveBtn.addEventListener('click',()=>{const e=colorInput.value;localStorage.setItem('favoriteColor',e),document.body.style.backgroundColor=e,message.textContent='Color saved!'}),clearBtn.addEventListener('click',()=>{localStorage.removeItem('favoriteColor'),document.body.style.backgroundColor='white',colorInput.value='#ffffff',message.textContent='Color cleared!'});
+</script>
 </body>
 </html>

@@ -19,7 +19,8 @@
     <div>
         <ul id="productList"></ul>
     </div>
-
-    <script src="q4.js"></script>
+<script>
+const searchInput=document.getElementById('searchInput'),productList=document.getElementById('productList'),noProductMessage=document.getElementById('noProductMessage'),products=['Apple iPhone 13','Samsung Galaxy S21','Sony Headphones Pro','Dell Laptop XPS 15','Apple MacBook Air','Canon Camera EOS','Nintendo Switch','iPad Pro 12.9','Google Pixel 6','LG Smart TV 55','Sony PlayStation 5','Microsoft Xbox Series X','Lenovo ThinkPad','ASUS Monitor 27','WD External Hard Drive'];function initializeProducts(){products.forEach((e)=>{const t=document.createElement('li');t.textContent=e,t.dataset.product=e.toLowerCase(),productList.appendChild(t)})}function filterProducts(e){const t=e.toLowerCase(),d=productList.querySelectorAll('li');let o=0;d.forEach((e)=>{const d=e.dataset.product;d.includes(t)?(e.style.display='block',o++):e.style.display='none'}),0===o?noProductMessage.style.display='block':noProductMessage.style.display='none'}searchInput.addEventListener('oninput',()=>{filterProducts(searchInput.value)}),searchInput.addEventListener('input',()=>{filterProducts(searchInput.value)}),initializeProducts();
+</script>
 </body>
 </html>

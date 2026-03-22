@@ -22,7 +22,8 @@
             <button id="verifyBtn">Verify PIN</button>
         </div>
     </div>
-
-    <script src="q2.js"></script>
+<script>
+const generateBtn=document.getElementById('generateBtn'),verifyBtn=document.getElementById('verifyBtn'),pinInput=document.getElementById('pinInput'),gameContainer=document.getElementById('gameContainer'),message=document.getElementById('message'),attemptsDisplay=document.getElementById('attempts');let generatedPin=null,attempts=3;function generatePin(){generatedPin=Math.floor(9e3*Math.random()+1e3),attempts=3,pinInput.value='',message.textContent='',attemptsDisplay.textContent=attempts,gameContainer.style.display='block',pinInput.focus()}function verifyPin(){const e=pinInput.value.trim();return''===e?(message.textContent='Please enter a PIN!',message.style.color='red',void 0):(4!==e.length||isNaN(e)?(message.textContent='PIN must be 4 digits!',message.style.color='red',void 0):(attempts--,e==generatedPin?(message.textContent='Correct PIN! You won!',message.style.color='green',pinInput.disabled=!0,verifyBtn.disabled=!0,void 0):0===attempts?(message.textContent='Game Over! The correct PIN was: '+generatedPin,message.style.color='red',pinInput.disabled=!0,verifyBtn.disabled=!0,attemptsDisplay.textContent='0',void 0):(message.textContent='Wrong PIN! Try again.',message.style.color='orange',attemptsDisplay.textContent=attempts,pinInput.value='',pinInput.focus(),void 0)))}generateBtn.addEventListener('click',generatePin),verifyBtn.addEventListener('click',verifyPin),pinInput.addEventListener('keypress',(e)=>{'Enter'===e.key&&verifyPin()});
+</script>
 </body>
 </html>

@@ -1,209 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Book Store - Registration</title>
-    <style>
-        body { padding: 20px; margin: 0; }
-        .nav { background: #555; padding: 10px; text-align: center; margin-bottom: 20px; }
-        .nav a { color: white; margin: 0 15px; text-decoration: none; display: inline-block; padding: 8px 15px; }
-        .nav a:hover { background: #333; }
-        .container { max-width: 600px; margin: 20px auto; padding: 30px; border: 1px solid #ddd; }
-        h1 { text-align: center; }
-        .info-text { text-align: center; color: #666; margin-bottom: 20px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        label { display: block; margin: 15px 0 5px; font-weight: bold; }
-        input, textarea, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; box-sizing: border-box; }
-        .form-row input { margin-bottom: 0; }
-        button { width: 100%; padding: 12px; background: #333; color: white; border: none; cursor: pointer; font-weight: bold; }
-        button:hover { background: #555; }
-        .error { color: #e74c3c; font-size: 12px; margin-top: 5px; display: none; }
-        .success { display: none; background: #d4edda; color: #155724; padding: 15px; border-radius: 4px; margin-bottom: 20px; text-align: center; }
-        p { text-align: center; margin-top: 20px; }
-        a { color: #333; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .password-strength { margin-top: 5px; padding: 5px; border-radius: 3px; font-size: 12px; }
-        .strength-weak { background: #ffcccc; color: #c92a2a; }
-        .strength-medium { background: #fff3cd; color: #856404; }
-        .strength-strong { background: #d4edda; color: #155724; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Book Store - Registration</title>
+<style>body{padding:10px;margin:0}.nav{background:#555;padding:5px;text-align:center;margin-bottom:10px}.nav a{color:#fff;margin:0 8px;text-decoration:none;display:inline-block;padding:4px 8px;font-size:.9em}.nav a:hover{background:#333}.container{max-width:500px;margin:10px auto;padding:15px;border:1px solid #ddd}h1{text-align:center;margin:5px 0;font-size:1.2em}.info-text{text-align:center;color:#666;margin-bottom:10px;font-size:.9em}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}label{display:block;margin:8px 0 3px;font-weight:bold;font-size:.9em}input,textarea,select{width:100%;padding:6px;margin-bottom:8px;border:1px solid #ddd;box-sizing:border-box;font-size:.9em}.form-row input{margin-bottom:0}button{width:100%;padding:8px;background:#333;color:#fff;border:none;cursor:pointer;font-weight:bold;font-size:.9em}button:hover{background:#555}.error{color:#e74c3c;font-size:11px;margin-top:3px;display:none}.success{display:none;background:#d4edda;color:#155724;padding:8px;border-radius:3px;margin-bottom:10px;text-align:center;font-size:.9em}p{text-align:center;margin:8px 0;font-size:.9em}a{color:#333;text-decoration:none}a:hover{text-decoration:underline}.password-strength{margin-top:3px;padding:3px;border-radius:2px;font-size:11px}.strength-weak{background:#ffcccc;color:#c92a2a}.strength-medium{background:#fff3cd;color:#856404}.strength-strong{background:#d4edda;color:#155724}textarea{resize:vertical}</style>
 </head>
 <body>
-    <div class="nav">
-        <a href="q2_home.html">Home</a>
-        <a href="q2_login.html">Login</a>
-        <a href="q2_catalogue.html">Browse</a>
-    </div>
-
-    <div class="container">
-        <h1>Create Your Account</h1>
-        <p class="info-text">Join our community to enjoy personalized recommendations and exclusive offers</p>
-
-        <div class="success" id="successMsg">
-            ✓ Registration successful! You can now <a href="q2_login.html" style="color: #155724; font-weight: bold;">login to your account</a>
-        </div>
-
-        <form id="registrationForm" onsubmit="handleRegistration(event)">
-            <div class="form-row">
-                <div>
-                    <label for="firstname">First Name:</label>
-                    <input type="text" id="firstname" placeholder="John" required />
-                    <div class="error" id="fnameError">First name is required</div>
-                </div>
-                <div>
-                    <label for="lastname">Last Name:</label>
-                    <input type="text" id="lastname" placeholder="Doe" required />
-                    <div class="error" id="lnameError">Last name is required</div>
-                </div>
-            </div>
-
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" placeholder="your.email@example.com" required />
-            <div class="error" id="emailError">Please enter a valid email address</div>
-
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" placeholder="10-digit phone number" maxlength="10" required />
-            <div class="error" id="phoneError">Phone number must be 10 digits</div>
-
-            <label for="country">Country:</label>
-            <select id="country" required>
-                <option value="">Select Country</option>
-                <option value="India">India</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-                <option value="Canada">Canada</option>
-                <option value="Australia">Australia</option>
-            </select>
-
-            <label for="address">Address:</label>
-            <textarea id="address" rows="3" placeholder="Enter your complete address" required></textarea>
-            <div class="error" id="addressError">Address is required</div>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" placeholder="Minimum 8 characters" required onkeyup="checkPasswordStrength()" />
-            <div class="error" id="passwordError">Password must be at least 8 characters</div>
-            <div class="password-strength" id="strengthIndicator" style="display: none;"></div>
-
-            <label for="confirm">Confirm Password:</label>
-            <input type="password" id="confirm" placeholder="Re-enter password" required />
-            <div class="error" id="confirmError">Passwords do not match</div>
-
-            <label style="margin-top: 20px;">
-                <input type="checkbox" id="terms" required /> I agree to the <strong>Terms of Service</strong> and <strong>Privacy Policy</strong>
-            </label>
-            <div class="error" id="termsError">You must agree to the terms</div>
-
-            <button type="submit">Create Account</button>
-        </form>
-
-        <p style="border-top: 1px solid #ddd; padding-top: 20px; margin-top: 20px;">
-            Already have an account? <a href="q2_login.html"><strong>Login here</strong></a>
-        </p>
-    </div>
+<div class="nav">
+<a href="q2_home.html">Home</a> <a href="q2_login.html">Login</a> <a href="q2_catalogue.html">Browse</a>
+</div>
+<div class="container">
+<h1>Create Account</h1>
+<p class="info-text">Join to get exclusive deals</p>
+<div class="success" id="successMsg">
+✓ Success! <a href="q2_login.html" style="color:#155724;font-weight:bold">Login</a>
+</div>
+<form id="registrationForm" onsubmit="handleRegistration(event)">
+<div class="form-row">
+<div><label for="firstname">First Name:</label><input type="text" id="firstname" placeholder="John" required /><div class="error" id="fnameError">Required</div></div>
+<div><label for="lastname">Last Name:</label><input type="text" id="lastname" placeholder="Doe" required /><div class="error" id="lnameError">Required</div></div>
+</div>
+<label for="email">Email:</label>
+<input type="email" id="email" placeholder="email@example.com" required />
+<div class="error" id="emailError">Invalid email</div>
+<label for="phone">Phone:</label>
+<input type="tel" id="phone" placeholder="10-digit" maxlength="10" required />
+<div class="error" id="phoneError">10 digits required</div>
+<label for="country">Country:</label>
+<select id="country" required>
+<option value="">Select</option>
+<option value="India">India</option>
+<option value="USA">USA</option>
+<option value="UK">UK</option>
+<option value="Canada">Canada</option>
+<option value="Australia">Australia</option>
+</select>
+<label for="address">Address:</label>
+<textarea id="address" rows="2" placeholder="Your address" required></textarea>
+<div class="error" id="addressError">Required</div>
+<label for="password">Password:</label>
+<input type="password" id="password" placeholder="Min 8 chars" required onkeyup="checkPasswordStrength()" />
+<div class="error" id="passwordError">Min 8 chars</div>
+<div class="password-strength" id="strengthIndicator" style="display:none"></div>
+<label for="confirm">Confirm:</label>
+<input type="password" id="confirm" placeholder="Re-enter" required />
+<div class="error" id="confirmError">No match</div>
+<label><input type="checkbox" id="terms" required /> I agree to Terms</label>
+<div class="error" id="termsError">Required</div>
+<button type="submit">Create Account</button>
+</form>
+<p style="border-top:1px solid #ddd;padding-top:10px;margin-top:10px">
+Have account? <a href="q2_login.html"><strong>Login</strong></a>
+</p>
+</div>
 
     <script>
-        function checkPasswordStrength() {
-            const password = document.getElementById('password').value;
-            const indicator = document.getElementById('strengthIndicator');
-            
-            let strength = 'Weak';
-            let strengthClass = 'strength-weak';
-            
-            if (password.length >= 8) {
-                strength = 'Medium';
-                strengthClass = 'strength-medium';
-            }
-            
-            if (password.length >= 12 && /[A-Z]/.test(password) && /[0-9]/.test(password)) {
-                strength = 'Strong';
-                strengthClass = 'strength-strong';
-            }
-            
-            indicator.textContent = 'Password Strength: ' + strength;
-            indicator.className = 'password-strength ' + strengthClass;
-            indicator.style.display = 'block';
-        }
-
-        function handleRegistration(event) {
-            event.preventDefault();
-            
-            const fname = document.getElementById('firstname').value.trim();
-            const lname = document.getElementById('lastname').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const address = document.getElementById('address').value.trim();
-            const password = document.getElementById('password').value;
-            const confirm = document.getElementById('confirm').value;
-            const terms = document.getElementById('terms').checked;
-
-            let isValid = true;
-
-            // Validation
-            if (!fname) {
-                document.getElementById('fnameError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('fnameError').style.display = 'none';
-            }
-
-            if (!lname) {
-                document.getElementById('lnameError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('lnameError').style.display = 'none';
-            }
-
-            if (!email || !email.includes('@')) {
-                document.getElementById('emailError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('emailError').style.display = 'none';
-            }
-
-            if (!/^\d{10}$/.test(phone)) {
-                document.getElementById('phoneError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('phoneError').style.display = 'none';
-            }
-
-            if (!address) {
-                document.getElementById('addressError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('addressError').style.display = 'none';
-            }
-
-            if (password.length < 8) {
-                document.getElementById('passwordError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('passwordError').style.display = 'none';
-            }
-
-            if (password !== confirm) {
-                document.getElementById('confirmError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('confirmError').style.display = 'none';
-            }
-
-            if (!terms) {
-                document.getElementById('termsError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('termsError').style.display = 'none';
-            }
-
-            if (isValid) {
-                document.getElementById('successMsg').style.display = 'block';
-                document.getElementById('registrationForm').style.display = 'none';
-                setTimeout(() => {
-                    window.location.href = 'q2_login.html';
-                }, 3000);
-            }
-        }
+function checkPasswordStrength(){const s=document.getElementById('password').value,t=document.getElementById('strengthIndicator');let e='Weak',d='strength-weak';s.length>=8&&(e='Medium',d='strength-medium'),s.length>=12&&/[A-Z]/.test(s)&&/[0-9]/.test(s)&&(e='Strong',d='strength-strong'),t.textContent='Strength: '+e,t.className='password-strength '+d,t.style.display='block'}
+function handleRegistration(e){e.preventDefault();const s=document.getElementById('firstname').value.trim(),t=document.getElementById('lastname').value.trim(),n=document.getElementById('email').value.trim(),r=document.getElementById('phone').value.trim(),a=document.getElementById('address').value.trim(),o=document.getElementById('password').value,i=document.getElementById('confirm').value,d=document.getElementById('terms').checked;let l=!0;s?(document.getElementById('fnameError').style.display='none',l=l):(document.getElementById('fnameError').style.display='block',l=!1),t?(document.getElementById('lnameError').style.display='none',l=l):(document.getElementById('lnameError').style.display='block',l=!1),n&&n.includes('@')?(document.getElementById('emailError').style.display='none',l=l):(document.getElementById('emailError').style.display='block',l=!1),/^\d{10}$/.test(r)?(document.getElementById('phoneError').style.display='none',l=l):(document.getElementById('phoneError').style.display='block',l=!1),a?(document.getElementById('addressError').style.display='none',l=l):(document.getElementById('addressError').style.display='block',l=!1),o.length>=8?(document.getElementById('passwordError').style.display='none',l=l):(document.getElementById('passwordError').style.display='block',l=!1),o===i?(document.getElementById('confirmError').style.display='none',l=l):(document.getElementById('confirmError').style.display='block',l=!1),d?(document.getElementById('termsError').style.display='none',l=l):(document.getElementById('termsError').style.display='block',l=!1),l&&(document.getElementById('successMsg').style.display='block',document.getElementById('registrationForm').style.display='none',setTimeout(()=>{window.location.href='q2_login.html'},3e3))}
     </script>
 </body>
 </html>

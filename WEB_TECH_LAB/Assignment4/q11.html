@@ -53,7 +53,8 @@
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </p>
-
-    <script src="q11.js"></script>
+<script>
+const decreaseBtn=document.getElementById('decreaseBtn'),increaseBtn=document.getElementById('increaseBtn'),sizeDisplay=document.getElementById('sizeDisplay'),body=document.body,sizes=['size-small','size-medium','size-large','size-xlarge'],sizeNames=['Small','Medium','Large','X-Large'];let currentSizeIndex=1;const savedSize=localStorage.getItem('fontSize');function saveSizeAndApply(){localStorage.setItem('fontSize',currentSizeIndex.toString()),applySizeClass()}function applySizeClass(){sizes.forEach(e=>body.classList.remove(e)),body.classList.add(sizes[currentSizeIndex]),sizeDisplay.textContent=sizeNames[currentSizeIndex]}savedSize&&(currentSizeIndex=parseInt(savedSize),applySizeClass()),decreaseBtn.addEventListener('click',()=>{currentSizeIndex>0&&(currentSizeIndex--,saveSizeAndApply())}),increaseBtn.addEventListener('click',()=>{currentSizeIndex<sizes.length-1&&(currentSizeIndex++,saveSizeAndApply())});
+</script>
 </body>
 </html>

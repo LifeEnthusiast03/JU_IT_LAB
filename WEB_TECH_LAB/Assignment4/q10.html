@@ -64,7 +64,8 @@
     </div>
 
     <div id="productsContainer" class="products-container"></div>
-
-    <script src="q10.js"></script>
+<script>
+const searchInput=document.getElementById('searchInput'),productsContainer=document.getElementById('productsContainer');let allProducts=[];fetch('products.json').then(e=>e.json()).then(e=>{allProducts=e,displayProducts(allProducts)}),searchInput.addEventListener('input',(e)=>{const t=e.target.value.toLowerCase(),d=allProducts.filter(e=>e.name.toLowerCase().includes(t));displayProducts(d)});function displayProducts(e){productsContainer.innerHTML='';let t=document.createElement('div');if(0===e.length)return t.className='no-products',t.textContent='No products found',productsContainer.appendChild(t),void 0;e.forEach(e=>{let d=document.createElement('div');d.className='product-card';let n=document.createElement('h3');n.textContent=e.name;let o=document.createElement('p');o.textContent='Category: '+e.category;let s=document.createElement('p');s.className='price',s.textContent='\$'+e.price.toFixed(2),d.appendChild(n),d.appendChild(o),d.appendChild(s),productsContainer.appendChild(d)})}
+</script>
 </body>
 </html>

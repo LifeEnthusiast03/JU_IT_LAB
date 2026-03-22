@@ -15,7 +15,8 @@
     <div id="warning" style="display:none; color:red;">
         ⚠️ Warning: You have exceeded 100 words!
     </div>
-
-    <script src="q12.js"></script>
+<script>
+const textArea=document.getElementById('textArea'),wordCount=document.getElementById('wordCount'),warning=document.getElementById('warning');textArea.addEventListener('input',()=>{let e=0;const t=textArea.value.trim();t.length>0&&(e=t.split(/\s+/).length),wordCount.textContent=e,e>100?warning.style.display='block':warning.style.display='none'});
+</script>
 </body>
 </html>

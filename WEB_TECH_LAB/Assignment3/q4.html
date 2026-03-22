@@ -4,32 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Shopping Cart</title>
-    <style>
-        body { margin: 0; padding: 0; }
-        header { background: #333; color: white; padding: 20px; text-align: center; }
-        nav { background: #555; padding: 10px; text-align: center; }
-        nav a { color: white; margin: 0 20px; text-decoration: none; cursor: pointer; }
-        nav a:hover { text-decoration: underline; }
-        .container { max-width: 1200px; margin: 20px auto; padding: 20px; }
-        .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .product-card { background: white; padding: 15px; border: 1px solid #ddd; }
-        .product-card img { width: 100%; height: 200px; background: #ddd; }
-        .price { color: #e74c3c; font-weight: bold; font-size: 18px; }
-        button { background: #333; color: white; padding: 10px 20px; border: none; cursor: pointer; width: 100%; margin-top: 10px; }
-        button:hover { background: #555; }
-        .cart-info { background: #f9f9f9; padding: 20px; margin-bottom: 20px; border: 1px solid #ddd; }
-        .cart-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-        .cart-table th { background: #333; color: white; padding: 10px; text-align: left; }
-        .cart-table td { padding: 10px; border-bottom: 1px solid #ddd; }
-        .remove-btn { background: #e74c3c; width: auto; padding: 5px 15px; }
-        .remove-btn:hover { background: #c0392b; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
-        .modal-content { background: white; margin: 5% auto; padding: 30px; max-width: 600px; }
-        .close { cursor: pointer; font-size: 28px; font-weight: bold; float: right; }
-        .checkout-btn { background: #27ae60; width: 100%; padding: 15px; font-size: 18px; margin-top: 20px; }
-        .checkout-btn:hover { background: #229954; }
-        footer { background: #333; color: white; padding: 20px; text-align: center; margin-top: 40px; }
-    </style>
+    <style>body{margin:0;padding:0}header{background:#333;color:#fff;padding:15px;text-align:center}nav{background:#555;padding:8px;text-align:center}nav a{color:#fff;margin:0 15px;text-decoration:none;cursor:pointer;font-size:.95em}nav a:hover{text-decoration:underline}.container{max-width:1200px;margin:15px auto;padding:15px}.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.product-card{background:#fff;padding:10px;border:1px solid #ddd}.product-card img{width:100%;height:180px;background:#ddd}.price{color:#e74c3c;font-weight:bold;font-size:1em}button{background:#333;color:#fff;padding:8px 15px;border:none;cursor:pointer;width:100%;margin-top:8px;font-size:.9em}button:hover{background:#555}.cart-info{background:#f9f9f9;padding:12px;margin-bottom:15px;border:1px solid #ddd}.cart-table{width:100%;border-collapse:collapse;margin-bottom:15px}.cart-table th{background:#333;color:#fff;padding:8px;text-align:left}.cart-table td{padding:8px;border-bottom:1px solid #ddd}.remove-btn{background:#e74c3c;width:auto;padding:4px 12px}.remove-btn:hover{background:#c0392b}.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000}.modal-content{background:#fff;margin:8% auto;padding:20px;max-width:500px}.close{cursor:pointer;font-size:24px;font-weight:bold;float:right}.checkout-btn{background:#27ae60;width:100%;padding:12px;font-size:1em;margin-top:15px}.checkout-btn:hover{background:#229954}footer{background:#333;color:#fff;padding:15px;text-align:center;margin-top:25px}</style>
 </head>
 <body>
     <header>
@@ -139,97 +114,6 @@
         <p>&copy; 2024 Online Shopping Cart. All rights reserved.</p>
     </footer>
 
-    <script>
-        let cart = [];
-
-        function addToCart(productName, price) {
-            const existingItem = cart.find(item => item.name === productName);
-            if (existingItem) {
-                existingItem.quantity++;
-            } else {
-                cart.push({ name: productName, price: price, quantity: 1 });
-            }
-            updateCart();
-            alert(productName + ' added to cart!');
-        }
-
-        function removeFromCart(productName) {
-            cart = cart.filter(item => item.name !== productName);
-            updateCart();
-        }
-
-        function updateCart() {
-            const cartCount = document.getElementById('cartCount');
-            const cartTotal = document.getElementById('cartTotal');
-            const cartBody = document.getElementById('cartBody');
-            
-            let totalItems = 0;
-            let totalPrice = 0;
-            
-            cartBody.innerHTML = '';
-            
-            cart.forEach(item => {
-                totalItems += item.quantity;
-                const itemTotal = item.price * item.quantity;
-                totalPrice += itemTotal;
-                
-                cartBody.innerHTML += `
-                    <tr>
-                        <td>${item.name}</td>
-                        <td>Rs. ${item.price}</td>
-                        <td>${item.quantity}</td>
-                        <td>Rs. ${itemTotal}</td>
-                        <td><button class="remove-btn" onclick="removeFromCart('${item.name}')">Remove</button></td>
-                    </tr>
-                `;
-            });
-            
-            cartCount.textContent = totalItems;
-            cartTotal.textContent = 'Rs. ' + totalPrice;
-            document.getElementById('summaryCount').textContent = totalItems;
-            document.getElementById('summaryTotal').textContent = 'Rs. ' + totalPrice;
-        }
-
-        function showSection(section) {
-            document.getElementById('productsSection').style.display = section === 'products' ? 'block' : 'none';
-            document.getElementById('cartSection').style.display = section === 'cart' ? 'block' : 'none';
-        }
-
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            document.getElementById('checkoutModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('checkoutModal').style.display = 'none';
-        }
-
-        function placeOrder() {
-            const name = document.getElementById('customerName').value;
-            const email = document.getElementById('customerEmail').value;
-            const phone = document.getElementById('customerPhone').value;
-            
-            if (!name || !email || !phone) {
-                alert('Please fill all details!');
-                return;
-            }
-            
-            alert('Order placed successfully! Order details will be sent to ' + email);
-            cart = [];
-            updateCart();
-            closeModal();
-            showSection('products');
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('checkoutModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-    </script>
+    <script>let cart=[];function addToCart(n,p){const e=cart.find(e=>e.name===n);e?e.quantity++:cart.push({name:n,price:p,quantity:1});updateCart();alert(n+' added to cart!')}function removeFromCart(n){cart=cart.filter(e=>e.name!==n);updateCart()}function updateCart(){const n=document.getElementById('cartCount'),e=document.getElementById('cartTotal'),t=document.getElementById('cartBody');let c=0,o=0;t.innerHTML='';cart.forEach(a=>{c+=a.quantity;const r=a.price*a.quantity;o+=r,t.innerHTML+=`<tr><td>${a.name}</td><td>Rs. ${a.price}</td><td>${a.quantity}</td><td>Rs. ${r}</td><td><button class="remove-btn" onclick="removeFromCart('${a.name}')">Remove</button></td></tr>`});n.textContent=c;e.textContent='Rs. '+o;document.getElementById('summaryCount').textContent=c;document.getElementById('summaryTotal').textContent='Rs. '+o}function showSection(n){document.getElementById('productsSection').style.display='products'===n?'block':'none';document.getElementById('cartSection').style.display='cart'===n?'block':'none'}function checkout(){0===cart.length?alert('Your cart is empty!'):document.getElementById('checkoutModal').style.display='block'}function closeModal(){document.getElementById('checkoutModal').style.display='none'}function placeOrder(){const n=document.getElementById('customerName').value,e=document.getElementById('customerEmail').value,t=document.getElementById('customerPhone').value;n&&e&&t?(alert('Order placed successfully! Order details will be sent to '+e),cart=[],updateCart(),closeModal(),showSection('products')):alert('Please fill all details!')}window.onclick=function(n){const e=document.getElementById('checkoutModal');n.target==e&&(e.style.display='none')}</script>
 </body>
 </html>

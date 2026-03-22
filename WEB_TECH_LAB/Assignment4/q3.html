@@ -22,7 +22,8 @@
         <h3>Last 5 Expenses:</h3>
         <ul id="expenseList"></ul>
     </div>
-
-    <script src="q3.js"></script>
+<script>
+const expenseName=document.getElementById('expenseName'),expenseAmount=document.getElementById('expenseAmount'),addBtn=document.getElementById('addBtn'),totalExpense=document.getElementById('totalExpense'),expenseList=document.getElementById('expenseList');let expenses=[];function addExpense(){const e=expenseName.value.trim(),s=parseFloat(expenseAmount.value.trim());return''===e?(alert('Please enter expense name!'),void 0):isNaN(s)||s<=0?(alert('Please enter a valid amount!'),void 0):(expenses.push({id:Date.now(),name:e,amount:s}),updateUI(),expenseName.value='',expenseAmount.value='',expenseName.focus(),void 0)}function updateUI(){updateTotal(),updateExpenseList()}function updateTotal(){const e=expenses.reduce((e,s)=>e+s.amount,0);totalExpense.textContent=e.toFixed(2)}function updateExpenseList(){expenseList.innerHTML='';const e=expenses.slice(-5).reverse();0===e.length?expenseList.innerHTML='<li>No expenses yet</li>':e.forEach((e)=>{const s=document.createElement('li');s.textContent=e.name+' - \$'+e.amount.toFixed(2),expenseList.appendChild(s)})}addBtn.addEventListener('click',addExpense),expenseAmount.addEventListener('keypress',(e)=>{'Enter'===e.key&&addExpense()});
+</script>
 </body>
 </html>

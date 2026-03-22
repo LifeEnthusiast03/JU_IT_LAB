@@ -17,7 +17,8 @@
         <button id="stopBtn">Stop</button>
         <button id="resetBtn">Reset</button>
     </div>
-
-    <script src="q5.js"></script>
+<script>
+const display=document.getElementById('display'),startBtn=document.getElementById('startBtn'),stopBtn=document.getElementById('stopBtn'),resetBtn=document.getElementById('resetBtn');let seconds=0,minutes=0,hours=0,intervalId=null,isRunning=!1;function startStopwatch(){isRunning||(isRunning=!0,startBtn.disabled=!0,stopBtn.disabled=!1,intervalId=setInterval(()=>{60==++seconds&&(seconds=0,minutes++),60===minutes&&(minutes=0,hours++),updateDisplay()},1e3))}function stopStopwatch(){isRunning&&(isRunning=!1,clearInterval(intervalId),startBtn.disabled=!1)}function resetStopwatch(){clearInterval(intervalId),isRunning=!1,seconds=0,minutes=0,hours=0,updateDisplay(),startBtn.disabled=!1,stopBtn.disabled=!0}function updateDisplay(){const t=(hours<10?'0'+hours:hours)+':'+(minutes<10?'0'+minutes:minutes)+':'+(seconds<10?'0'+seconds:seconds);display.textContent=t}startBtn.addEventListener('click',startStopwatch),stopBtn.addEventListener('click',stopStopwatch),resetBtn.addEventListener('click',resetStopwatch),stopBtn.disabled=!0;
+</script>
 </body>
 </html>

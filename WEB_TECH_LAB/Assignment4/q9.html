@@ -42,7 +42,8 @@
 
         <p>Total Votes: <span id="totalVotes">0</span></p>
     </div>
-
-    <script src="q9.js"></script>
+<script>
+const option1Btn=document.getElementById('option1'),option2Btn=document.getElementById('option2'),option3Btn=document.getElementById('option3');let votes={javascript:0,python:0,java:0};function updateResults(){const e=votes.javascript+votes.python+votes.java,t=0===e?0:Math.round(100*votes.javascript/e),n=0===e?0:Math.round(100*votes.python/e),o=0===e?0:Math.round(100*votes.java/e);document.getElementById('votes1').textContent=votes.javascript,document.getElementById('votes2').textContent=votes.python,document.getElementById('votes3').textContent=votes.java,document.getElementById('percent1').textContent=t,document.getElementById('percent2').textContent=n,document.getElementById('percent3').textContent=o,document.getElementById('bar1').style.width=t+'%',document.getElementById('bar2').style.width=n+'%',document.getElementById('bar3').style.width=o+'%',document.getElementById('totalVotes').textContent=e}option1Btn.addEventListener('click',()=>{votes.javascript++,updateResults()}),option2Btn.addEventListener('click',()=>{votes.python++,updateResults()}),option3Btn.addEventListener('click',()=>{votes.java++,updateResults()});
+</script>
 </body>
 </html>
