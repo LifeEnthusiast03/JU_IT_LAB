@@ -1,196 +1,252 @@
 # JU_IT_LAB - Jadavpur University IT Lab Programs
 
-Comprehensive repository containing lab assignments and projects for various IT subjects.
+Comprehensive repository containing lab assignments and projects for various IT subjects at Jadavpur University.
 
 ## 📁 Repository Structure
 
 ```
 JU_IT_LAB/
 ├── CN_LAB/
+│   └── cn/
+│       ├── ass1/
+│       │   ├── datagram_socket/   (client.c, server.c)
+│       │   ├── raw_socket/        (client.c, server.c)
+│       │   └── stream_socket/     (client.c, server.c)
+│       └── ass2/
+│           ├── q1/  (simplex.c)
+│           ├── q2/  (stop_n_wait_noiseless.c, stop_n_wait_noisy.c)
+│           ├── q3/  (nack.c, non_nack.c, piggybacked.c)
+│           ├── q4/  (nack.c, non_nack.c, piggybacked.c)
+│           └── q5/  (q5.c)
 ├── DBMS_LAB/
+│   ├── 37_DBMS_ASS1.pdf
+│   ├── 37_DBMS_ASS2.pdf
+│   ├── 37_DBMS_ASS3.pdf
+│   └── 37_DBMS_ASS4.pdf
 ├── DSA_LAB/
+│   └── DSA_ASSIGNMENT.pdf
 ├── OOP_LAB/
+│   ├── OOP_ASSIGNMENT_1.pdf
+│   ├── OOP_ASSIGNMENT_2.pdf
+│   ├── OOP_ASSIGNMENT_3.pdf
+│   ├── OOP_ASSIGNMENT_4.pdf
+│   └── OOP_ASSIGNMENT_5.pdf
 ├── OOS_LAB/
+│   ├── 002311001037_SOUGATA_SAHA_ASS2.pdf
+│   ├── 002311001037_SOUGATA_SAHA_ASS4.pdf
+│   └── 002311001037_SOUGATA_SAHA_ASS5.pdf
 ├── OS_LAB/
+│   ├── A3_10_1A.sh
+│   ├── A3_10_1B.c
+│   ├── A3_10_2A.c
+│   ├── A3_10_2B.c
+│   ├── A3_10_3.py
+│   ├── A3_10_4.c
+│   ├── A3_10_5.c
+│   ├── A3_10_6.c
+│   ├── A3_10_7.c
+│   ├── assignment5   (compiled binary)
+│   ├── matmul_pthread (compiled binary)
+│   └── mmap_demo     (compiled binary)
 ├── SE_LAB/
+│   ├── 037_ASS1.pdf
+│   └── 037_ASS2.pdf
 └── WEB_TECH_LAB/
+    ├── WEBTECH_ASSIGNMENT.pdf
+    ├── Assignment1/   (q1–q5 HTML)
+    ├── Assignment2/   (question1–question9 HTML)
+    ├── Assignment3/   (q1–q6 HTML, multi-page website)
+    └── Assignment4/   (q1–q12 HTML, products.json)
 ```
 
 ---
 
 ## Labs Overview
 
-### 🌐 WEB_TECH_LAB - Web Technology
-Web-based programming with HTML, CSS, and JavaScript
+### 📡 CN_LAB — Computer Networks
 
-#### **Assignment1** - Basic JavaScript & DOM
-Simple programs demonstrating fundamental JavaScript concepts:
-- **q1.html** - Display message on button click
-- **q2.html** - Change paragraph text using innerHTML & getElementById
-- **q3.html** - Add two numbers with input boxes and DOM display
-- **q4.html** - Change background color using document.body.style.backgroundColor
-- **q5.html** - Display current date and time using Date() object
+Socket programming and data-link layer protocol simulations in C.
 
-#### **Assignment2** - Intermediate JavaScript (9 Programs)
-Programming challenges with input validation and DOM manipulation:
-- **question1.html** - Even/Odd number checker
-- **question2.html** - Calculate square and cube of a number
-- **question3.html** - Dynamic button click counter
-- **question4.html** - Random background color generator
-- **question5.html** - Display current date, time, and day (Monday, Tuesday, etc.)
-- **question6.html** - Marks calculator (total, average, pass/fail result)
-- **question7.html** - Toggle show/hide paragraph functionality
-- **question8.html** - Text input validation with warning messages
-- **question9.html** - Find the largest number among three inputs
+#### **Assignment 1** — Socket Programming
 
-#### **Assignment3** - Empty (Available for future assignments)
+| Directory | Files | Description |
+|---|---|---|
+| `datagram_socket/` | `client.c`, `server.c` | UDP client-server communication |
+| `raw_socket/` | `client.c`, `server.c` | Raw socket communication with custom packet construction |
+| `stream_socket/` | `client.c`, `server.c` | TCP stream-based client-server communication |
 
-#### **Assignment4** - Advanced Web Applications (12 Interactive Projects)
+#### **Assignment 2** — Data Link Layer Protocols
 
-**Task Management & Utilities:**
-- **q1.html, q1.js** - Dynamic To-Do Task Manager
-  - Add/delete tasks, mark as completed, display pending count
-  - Uses: createElement(), appendChild(), classList.toggle()
-
-- **q2.html, q2.js** - PIN Verification Game
-  - Generate random 4-digit PIN, 3 attempts only, verify input
-  - Uses: Math.floor(), DOM validation
-
-- **q3.html, q3.js** - Expense Tracker
-  - Add expenses, calculate total, show last 5 expenses
-  - Uses: Array, reduce(), DOM update
-
-**Search & Filtering:**
-- **q4.html, q4.js** - Product Search Filter
-  - Display 15 products, live filtering, "no product found" message
-  - Uses: oninput event, filter(), DOM hide/show
-
-**Time Management:**
-- **q5.html, q5.js** - Digital Stopwatch
-  - Start/Stop/Reset functionality, displays seconds
-  - Uses: setInterval(), clearInterval()
-
-**Form Validation & Security:**
-- **q6.html, q6.js** - Login Form Validator
-  - Username (min 5 chars), email validation, password (min 8 chars)
-  - Uses: Regex patterns, preventDefault()
-
-**Data Persistence:**
-- **q7.html, q7.js** - User Preferences with LocalStorage
-  - Save/load/clear favorite color, persists after page reload
-  - Uses: localStorage.setItem(), getItem(), removeItem()
-
-**Carousel & Display:**
-- **q8.html, q8.js** - Automatic Text Carousel
-  - Display one quote at a time, auto-change every 4 seconds
-  - Uses: Array, setInterval()
-
-**Polling & Voting:**
-- **q9.html, q9.js** - Voting Poll Application
-  - 3 voting options, display percentage results with progress bars
-  - Uses: Objects/Arrays, DOM update, percentage calculation
-
-**Data Integration:**
-- **q10.html, q10.js** - Product Display from JSON
-  - Fetch product data, display in card layout, search functionality
-  - Uses: fetch(), then(), DOM creation
-  - **products.json** - Sample product data file
-
-**Accessibility Features:**
-- **q11.html, q11.js** - Font Size Toggle
-  - Increase/decrease font size, saves setting after reload
-  - Uses: classList, localStorage
-
-**Text Analysis:**
-- **q12.html, q12.js** - Live Word Counter
-  - Show word count in real-time, warning if exceeds 100 words
-  - Uses: input event, split(), length validation
+| Directory | Files | Description |
+|---|---|---|
+| `q1/` | `simplex.c` | Simplex data transfer protocol |
+| `q2/` | `stop_n_wait_noiseless.c`, `stop_n_wait_noisy.c` | Stop-and-Wait ARQ (noiseless & noisy channel variants) |
+| `q3/` | `nack.c`, `non_nack.c`, `piggybacked.c` | Go-Back-N ARQ — NACK, Non-NACK, and Piggybacked ACK |
+| `q4/` | `nack.c`, `non_nack.c`, `piggybacked.c` | Selective Repeat ARQ — NACK, Non-NACK, and Piggybacked ACK |
+| `q5/` | `q5.c` | Additional protocol simulation |
 
 ---
 
-### 📡 CN_LAB - Computer Networks
-**Files:**
-- a.txt
+### 🗄️ DBMS_LAB — Database Management System
+
+Submitted PDF assignments covering relational database design, SQL, and normalization.
+
+| File | Description |
+|---|---|
+| `37_DBMS_ASS1.pdf` | Assignment 1 |
+| `37_DBMS_ASS2.pdf` | Assignment 2 |
+| `37_DBMS_ASS3.pdf` | Assignment 3 |
+| `37_DBMS_ASS4.pdf` | Assignment 4 |
 
 ---
 
-### 🗄️ DBMS_LAB - Database Management System
-**PDF Assignments:**
-- 37_DBMS_ASS1.pdf - Assignment 1
-- 37_DBMS_ASS2.pdf - Assignment 2
-- 37_DBMS_ASS3.pdf - Assignment 3
-- 37_DBMS_ASS4.pdf - Assignment 4
-- sample.txt
+### 📊 DSA_LAB — Data Structures & Algorithms
+
+| File | Description |
+|---|---|
+| `DSA_ASSIGNMENT.pdf` | Assignment document covering data structures topics |
 
 ---
 
-### 📊 DSA_LAB - Data Structures & Algorithms
-**Files:**
-- DSA_ASSIGNMENT.pdf - Assignment document
-- sample.txt
+### 🎯 OOP_LAB — Object-Oriented Programming
+
+Submitted PDF assignments covering OOP concepts.
+
+| File | Description |
+|---|---|
+| `OOP_ASSIGNMENT_1.pdf` | Assignment 1 |
+| `OOP_ASSIGNMENT_2.pdf` | Assignment 2 |
+| `OOP_ASSIGNMENT_3.pdf` | Assignment 3 |
+| `OOP_ASSIGNMENT_4.pdf` | Assignment 4 |
+| `OOP_ASSIGNMENT_5.pdf` | Assignment 5 |
 
 ---
 
-### 🎯 OOP_LAB - Object-Oriented Programming
-**PDF Assignments:**
-- OOP_ASSIGNMENT_1.pdf
-- OOP_ASSIGNMENT_2.pdf
-- OOP_ASSIGNMENT_3.pdf
-- OOP_ASSIGNMENT_4.pdf
-- OOP_ASSIGNMENT_5.pdf
-- sample.txt
+### 🖥️ OOS_LAB — Open Source Software / Operating System Concepts
+
+Submitted PDF reports by **Sougata Saha (Roll: 002311001037)**.
+
+| File | Description |
+|---|---|
+| `002311001037_SOUGATA_SAHA_ASS2.pdf` | Assignment 2 submission |
+| `002311001037_SOUGATA_SAHA_ASS4.pdf` | Assignment 4 submission |
+| `002311001037_SOUGATA_SAHA_ASS5.pdf` | Assignment 5 submission |
 
 ---
 
-### 🖥️ OOS_LAB - Operating System Concepts
-**Files:**
-- 002311001037_SOUGATA_SAHA.pdf - Student submission
-- a.txt
+### ⚙️ OS_LAB — Operating System (Practical)
+
+System programming assignments in C, Python, and Shell Script covering process management, threading, IPC, and memory mapping.
+
+| File | Language | Description |
+|---|---|---|
+| `A3_10_1A.sh` | Shell | Shell script assignment |
+| `A3_10_1B.c` | C | C assignment 1B |
+| `A3_10_2A.c` | C | C assignment 2A |
+| `A3_10_2B.c` | C | C assignment 2B |
+| `A3_10_3.py` | Python | Python assignment |
+| `A3_10_4.c` | C | C assignment 4 |
+| `A3_10_5.c` | C | C assignment 5 |
+| `A3_10_6.c` | C | C assignment 6 |
+| `A3_10_7.c` | C | C assignment 7 |
+| `assignment5` | Binary | Compiled executable for assignment 5 |
+| `matmul_pthread` | Binary | Matrix multiplication using POSIX threads |
+| `mmap_demo` | Binary | Memory-mapped file demonstration |
 
 ---
 
-### ⚙️ OS_LAB - Operating System (Practical)
-**Programming Files (C, Python, Shell Script):**
-- **A3_10_1A.sh** - Shell script assignment
-- **A3_10_1B.c** - C assignment 1B
-- **A3_10_2A.c** - C assignment 2A
-- **A3_10_2B.c** - C assignment 2B
-- **A3_10_3.py** - Python assignment
-- **A3_10_4.c** - C assignment 4
-- **A3_10_5.c** - C assignment 5
-- **A3_10_6.c** - C assignment 6
-- **A3_10_7** - Compiled executable
-- **A3_10_7.c** - C assignment 7
-- **assignment5/** - Assignment 5 folder
-- **matmul_pthread/** - Matrix multiplication with POSIX threads
-- **mmap_demo/** - Memory-mapped file demonstration
-- **.vscode/** - VS Code configuration
+### 💼 SE_LAB — Software Engineering
+
+Submitted PDF assignments covering software engineering methodologies.
+
+| File | Description |
+|---|---|
+| `037_ASS1.pdf` | Assignment 1 |
+| `037_ASS2.pdf` | Assignment 2 |
 
 ---
 
-### 💼 SE_LAB - Software Engineering
-**PDF Documents:**
-- 037_ASS1.pdf - Assignment 1
-- 037_ASS2.pdf - Assignment 2
-- a.txt
+### 🌐 WEB_TECH_LAB — Web Technology
+
+Web-based programming with HTML, CSS, and JavaScript. Also includes `WEBTECH_ASSIGNMENT.pdf` (the official assignment sheet).
+
+#### **Assignment 1** — Basic JavaScript & DOM (5 Programs)
+
+| File | Description |
+|---|---|
+| `q1.html` | Display a message on button click |
+| `q2.html` | Change paragraph text using `innerHTML` & `getElementById` |
+| `q3.html` | Add two numbers with input boxes and display result via DOM |
+| `q4.html` | Change background color using `document.body.style.backgroundColor` |
+| `q5.html` | Display current date and time using the `Date()` object |
+
+#### **Assignment 2** — Intermediate JavaScript (9 Programs)
+
+| File | Description |
+|---|---|
+| `question1.html` | Even/Odd number checker |
+| `question2.html` | Calculate square and cube of a number |
+| `question3.html` | Dynamic button click counter |
+| `question4.html` | Random background color generator |
+| `question5.html` | Display current date, time, and day name |
+| `question6.html` | Marks calculator (total, average, pass/fail) |
+| `question7.html` | Toggle show/hide paragraph functionality |
+| `question8.html` | Text input validation with warning messages |
+| `question9.html` | Find the largest number among three inputs |
+
+#### **Assignment 3** — Multi-Page Website (6 Pages)
+
+| File | Description |
+|---|---|
+| `q1.html` | Standalone page / entry point |
+| `q2_home.html` | Home page of a multi-page website |
+| `q2_login.html` | Login page with form |
+| `q2_registration.html` | Registration/sign-up page |
+| `q2_catalogue.html` | Product/catalogue listing page |
+| `q3.html` | Additional page (q3) |
+| `q4.html` | Additional page (q4) |
+| `q5.html` | Additional page (q5) |
+| `q6.html` | Additional page (q6) |
+
+#### **Assignment 4** — Advanced JavaScript Applications (12 Programs)
+
+| File(s) | Description |
+|---|---|
+| `q1.html` | Dynamic To-Do Task Manager — add/delete tasks, mark completed, show pending count |
+| `q2.html` | PIN Verification Game — random 4-digit PIN, 3 attempts, DOM validation |
+| `q3.html` | Expense Tracker — add expenses, calculate total, show last 5 |
+| `q4.html` | Product Search Filter — 15 products, live filtering, "no product found" message |
+| `q5.html` | Digital Stopwatch — Start/Stop/Reset with `setInterval` |
+| `q6.html` | Login Form Validator — username, email & password validation with regex |
+| `q7.html` | User Preferences with LocalStorage — save/load/clear favourite color |
+| `q8.html` | Automatic Text Carousel — one quote at a time, auto-change every 4s |
+| `q9.html` | Voting Poll Application — 3 options, percentage results with progress bars |
+| `q10.html` | Product Display from JSON — `fetch()` from `products.json`, card layout, search |
+| `q11.html` | Font Size Toggle — increase/decrease size, saves setting via localStorage |
+| `q12.html` | Live Word Counter — real-time word count, warning if over 100 words |
+| `products.json` | Sample product data file used by `q10.html` |
 
 ---
 
 ## 🚀 Technologies Used
 
-- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
-- **Backend Concepts:** JSON, LocalStorage
-- **Programming Languages:** C, Python, JavaScript, Shell Script
-- **Tools:** VS Code, Git
+| Category | Technologies |
+|---|---|
+| **Web Front-end** | HTML5, CSS3, JavaScript (ES6+) |
+| **System Programming** | C, POSIX Threads, Shell Script |
+| **Scripting** | Python 3 |
+| **Networking** | TCP/IP Sockets, UDP, Raw Sockets |
+| **Data** | JSON, LocalStorage |
+| **Tools** | VS Code, Git, GCC |
 
 ## 📝 Notes
 
-- All WEB_TECH_LAB programs are standalone HTML files with embedded JavaScript
-- Most projects follow a single-file approach for simplicity
-- Assignment3 in WEB_TECH_LAB is currently empty
-- OS_LAB contains practical C programming assignments
-- Use any modern web browser to run WEB_TECH_LAB applications
+- All `WEB_TECH_LAB` programs are **standalone HTML files** — open directly in any modern browser.
+- `CN_LAB` programs require **GCC** and a **Linux/Unix** environment to compile and run.
+- `OS_LAB` binaries (`assignment5`, `matmul_pthread`, `mmap_demo`) are pre-compiled Linux ELF executables.
+- `OOS_LAB`, `DBMS_LAB`, `DSA_LAB`, `OOP_LAB`, and `SE_LAB` contain submitted **PDF assignments** only.
+- Student roll number: **002311001037** (Sougata Saha).
 
 ---
 
-**Last Updated:** March 20, 2026
+**Last Updated:** May 19, 2026
